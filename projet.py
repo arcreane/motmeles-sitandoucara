@@ -25,14 +25,10 @@ def display_grid():
         print(f'{i:2d} |', end=' ')
         for j in range(0,column):
             print(letters[i][j], end='  ')
-        print('|', display_words(word_list))
-      
-    
-
-def display_words(word_list):
-    for word in word_list:
-        return(word) 
-
+        if i < len(word_list):
+            print('|',word_list[i])
+        else :
+            print('|')
 
 # Define function to display welcome menu
 def display_menu():
