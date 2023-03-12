@@ -1,0 +1,8 @@
+1.Generer les lettres de manieres random
+2.Faire une function pour generer la grille
+3.Faire une fonction pour le menu de démarrage
+4.Inserer les mots dans la grille
+5.Trouver les mots croisés 
+6.Faire des fonctions pour les differents niveaux
+7.Ajouter dans le menu les options pour les niveaux
+8.Separer le code en plusieurs fichiers
