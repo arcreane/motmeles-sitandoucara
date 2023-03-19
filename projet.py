@@ -17,14 +17,21 @@ def insert_words(grid, words):
         line, column = random.randint(0, 15), random.randint(0, 7)
         # horizontal placement
         if random.randint(0, 1):
-            if column + word_len <= 7:
+            if column + word_len < 7:
                 for i in range(word_len):
-                    grid[line][column+i] = word[i]
+                    try:
+                        grid[line][column+i] = word[i]
+                    except Exception :
+                        print(word[i])
         # vertical placement
         else:
-            if line + word_len <= 15:
+            if line + word_len < 15:
                 for i in range(word_len):
-                    grid[line+i][column] = word[i]
+                    try:
+                        grid[line+i][column] = word[i]
+                    except Exception :
+                        print(word[i])
+                       
     return grid
 
 grid_letters = insert_words(letters, word_list)
@@ -87,28 +94,4 @@ def find_word_in_grid():
         print("Sorry, the word does not exist in the grid")
 
 
-
-
-# Define function to display welcome menu
-def display_menu():
-    print(55*"*", "\tWelcome to Sitan's Random Letter Grid!", 55*"*","\n",sep="\n")
-    #print("Welcome to Sitan's Random Letter Grid!\n")
-    print('Please choose an option:')
-    print('1. To start the game')
-    print('2. To leave')
-
-
-# Display welcome menu and get user choice
-while True:
-    display_menu()
-    choice = input('Enter your choice: ')
-    if choice == '1':
-        display_grid()
-        find_word_in_grid()
-        break
-    elif choice == '2':
-        print('Goodbye!')
-        break
-    else:
-        print('Invalid choice. Please try again.\n')
 
