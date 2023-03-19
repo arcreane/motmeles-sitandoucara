@@ -3,7 +3,7 @@ import string
 import random
 
 #Trial of the easy version 10 x 5 - words are less than 4 letters
-word_list = ["duo", "an", "bac", "cil"]
+word_list_easy = ["duo", "an", "bac", "cil"]
 line = 10
 column = 5
 
@@ -34,7 +34,7 @@ def insert_words(grid, words):
                        
     return grid
 
-grid_letters = insert_words(letters, word_list)
+grid_letters = insert_words(letters, word_list_easy)
 
 #Define function to display grid
 #Using f-string(f') for concatenation and a 2D array (2d) for number alignment
@@ -51,20 +51,20 @@ def display_easy_grid():
         print(f'{i:2d} |', end=' ')
         for j in range(0,column):
             print(grid_letters[i][j], end='  ')
-        if i < len(word_list):
-            print('|',word_list[i])
+        if i < len(word_list_easy):
+            print('|',word_list_easy[i])
         else :
             print('|')
 
 #Function to check if the entered word exists in the list
-def check_word_exist(word, word_list):
-    if word in word_list:
+def check_easy_word_exist(word, word_list_easy):
+    if word in word_list_easy:
         return True
     else:
         return False
 
 #Function to allow the user to enter the coordinates of the word
-def find_word_in_grid():
+def find_word_in_easy_grid():
 # Get user input for line and column of the first letter of the word
     line = int(input("Enter the line number of the first letter of the word (0-9): "))
     column = int(input("Enter the column number of the first letter of the word (0-4): "))
@@ -77,18 +77,18 @@ def find_word_in_grid():
 
 # If direction is horizontal, get all letters in the row
     if direction == 0:
-        for j in range(column, column + len(word_list)):
+        for j in range(column, column + len(word_list_easy)):
             letters.append(grid_letters[line][j])
 # If direction is vertical, get all letters in the column
     else:
-        for i in range(line, line + len(word_list)):
+        for i in range(line, line + len(word_list_easy)):
             letters.append(grid_letters[i][column])
 
 # Concatenate the letters to form the word
     word = "".join(letters)
 
 # Check if the word exists in the word list
-    if check_word_exist(word, word_list):
+    if check_easy_word_exist(word,word_list_easy):
         print("Congratulations, you found the word", word)
     else:
         print("Sorry, the word does not exist in the grid")
