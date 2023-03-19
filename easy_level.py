@@ -2,10 +2,10 @@
 import string
 import random
 
-#Trial of the average version 15 x 7 - words are between 4 and 6 letters long
-word_list = ["pomme", "dallai", "marbre", "normes","solive","trésor"]
-line = 15
-column = 7
+#Trial of the easy version 10 x 5 - words are less than 4 letters
+word_list = ["duo", "an", "bac", "cil"]
+line = 10
+column = 5
 
 #Random letter generator based on column and line
 letters = [[random.choice(string.ascii_uppercase) for i in range(0,column)] for j in range(0,line)]
@@ -14,10 +14,10 @@ letters = [[random.choice(string.ascii_uppercase) for i in range(0,column)] for 
 def insert_words(grid, words):
     for word in words:
         word_len = len(word)
-        line, column = random.randint(0, 15), random.randint(0, 7)
+        line, column = random.randint(0, 10), random.randint(0, 5)
         # horizontal placement
         if random.randint(0, 1):
-            if column + word_len < 7:
+            if column + word_len < 5:
                 for i in range(word_len):
                     try:
                         grid[line][column+i] = word[i]
@@ -25,7 +25,7 @@ def insert_words(grid, words):
                         print(word[i])
         # vertical placement
         else:
-            if line + word_len < 15:
+            if line + word_len < 10:
                 for i in range(word_len):
                     try:
                         grid[line+i][column] = word[i]
@@ -38,7 +38,7 @@ grid_letters = insert_words(letters, word_list)
 
 #Define function to display grid
 #Using f-string(f') for concatenation and a 2D array (2d) for number alignment
-def display_grid():
+def display_easy_grid():
     # Display column numbers 
     print('  ', end='  ')
     for i in range(0,column):
@@ -66,8 +66,8 @@ def check_word_exist(word, word_list):
 #Function to allow the user to enter the coordinates of the word
 def find_word_in_grid():
 # Get user input for line and column of the first letter of the word
-    line = int(input("Enter the line number of the first letter of the word (0-14): "))
-    column = int(input("Enter the column number of the first letter of the word (0-6): "))
+    line = int(input("Enter the line number of the first letter of the word (0-9): "))
+    column = int(input("Enter the column number of the first letter of the word (0-4): "))
     # Get user input for the direction of the word (0 for horizontal, 1 for vertical)
     direction = int(input("Enter the direction of the word (0 for horizontal, 1 for vertical): "))
 
