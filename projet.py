@@ -49,6 +49,46 @@ def display_grid():
         else :
             print('|')
 
+#Function to check if the entered word exists in the list
+def check_word_exist(word, word_list):
+    if word in word_list:
+        return True
+    else:
+        return False
+
+#Function to allow the user to enter the coordinates of the word
+def find_word_in_grid():
+# Get user input for line and column of the first letter of the word
+    line = int(input("Enter the line number of the first letter of the word (0-14): "))
+    column = int(input("Enter the column number of the first letter of the word (0-6): "))
+    # Get user input for the direction of the word (0 for horizontal, 1 for vertical)
+    direction = int(input("Enter the direction of the word (0 for horizontal, 1 for vertical): "))
+
+# Initialize variables to store the word and letters in the direction
+    word = ""
+    letters = []
+
+# If direction is horizontal, get all letters in the row
+    if direction == 0:
+        for j in range(column, column + len(word_list)):
+            letters.append(grid_letters[line][j])
+# If direction is vertical, get all letters in the column
+    else:
+        for i in range(line, line + len(word_list)):
+            letters.append(grid_letters[i][column])
+
+# Concatenate the letters to form the word
+    word = "".join(letters)
+
+# Check if the word exists in the word list
+    if check_word_exist(word, word_list):
+        print("Congratulations, you found the word", word)
+    else:
+        print("Sorry, the word does not exist in the grid")
+
+
+
+
 # Define function to display welcome menu
 def display_menu():
     print(55*"*", "\tWelcome to Sitan's Random Letter Grid!", 55*"*","\n",sep="\n")
@@ -64,6 +104,7 @@ while True:
     choice = input('Enter your choice: ')
     if choice == '1':
         display_grid()
+        find_word_in_grid()
         break
     elif choice == '2':
         print('Goodbye!')
